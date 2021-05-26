@@ -1,0 +1,33 @@
+<div class="py-4 mb-2">
+  <h3 class="d-inline-block">Blogs</h3>
+  <div class="float-right">
+    <%= linkTo(newBlogsPath(), {class: "btn btn-primary"}) { %>
+      Create New Blog
+    <% } %>
+  </div>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead class="thead-light">
+    <th>Title</th><th>Body</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <%= for (blog) in blogs { %>
+      <tr>
+        <td class="align-middle"><%= blog.Title %></td><td class="align-middle"><%= blog.Body %></td>
+        <td>
+          <div class="float-right">
+            <%= linkTo(blogPath({ blog_id: blog.ID }), {class: "btn btn-info", body: "View"}) %>
+            <%= linkTo(editBlogPath({ blog_id: blog.ID }), {class: "btn btn-warning", body: "Edit"}) %>
+            <%= linkTo(blogPath({ blog_id: blog.ID }), {class: "btn btn-danger", "data-method": "DELETE", "data-confirm": "Are you sure?", body: "Destroy"}) %>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <%= paginator(pagination) %>
+</div>

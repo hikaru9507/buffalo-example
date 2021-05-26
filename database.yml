@@ -1,9 +1,9 @@
 ---
 development:
-  dialect: postgres
+  dialect: mysql
   database: example_app_development
-  user: postgres
-  password: postgres
+  user: root
+  password:
   host: 127.0.0.1
   pool: 5
 
